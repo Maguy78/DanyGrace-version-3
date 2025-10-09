@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Témoignages - DanyGrace</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #000000;
+            background-color: #FFFFFF;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            color: #FFFFFF;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #FFD700, #F4C2C2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: #FFFFF0;
+            font-style: italic;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #FFFFF0;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: #F4C2C2;
+            color: #FFFFFF;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #FFFFF0, #F4C2C2);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #000000;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #333333;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 4rem 0;
+            background-color: #FFFFFF;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.2rem;
+            color: #333333;
+            line-height: 1.8;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #FFFFF0, #FFFFFF);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            border-left: 5px solid #FFD700;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 5rem;
+            color: #F4C2C2;
+            opacity: 0.3;
+        }
+
+        .testimonial-title {
+            color: #FFD700;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .testimonial-content {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #333333;
+            font-style: italic;
+            margin-left: 1rem;
+        }
+
+        .highlight-quote {
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 1.15rem;
+        }
+
+        /* Coming Soon Section */
+        .coming-soon {
+            background: linear-gradient(135deg, #000000, #333333);
+            color: #FFFFFF;
+            padding: 3rem;
+            text-align: center;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+
+        .coming-soon h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+
+        .coming-soon p {
+            font-size: 1.1rem;
+            color: #FFFFF0;
+            font-style: italic;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #FFD700, #F4C2C2);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            color: #000000;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: #333333;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #000000, #333333);
+            color: #FFFFFF;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #000000, #333333);
+            color: #FFFFFF;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-signature {
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            color: #F4C2C2;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .testimonial-card {
+                padding: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1 class="logo">DanyGrace</h1>
+            <p class="tagline">Mentore d'Identité</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="index.html#qui-je-suis">Qui je suis</a>
+                <a href="index.html#services">Services</a>
+                <a href="temoignages.html" class="active">Témoignages</a>
+                <a href="rendez-vous.html">Prendre Rendez-vous</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>✨ Témoignages</h1>
+            <p>Chaque rendez-vous est plus qu'une rencontre : c'est une visitation.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-intro fade-in">
+                Voici quelques témoignages de ceux qui ont vécu l'impact d'un temps d'écoute et de vérité.
+            </div>
+
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card fade-in">
+                <h3 class="testimonial-title">
+                    <i class="fas fa-star"></i>
+                    Témoignage d'une rencontre
+                </h3>
+                <p class="testimonial-content">
+                    "Je suis venue pour parler de mon entreprise. Mais au-delà des affaires, le Saint-Esprit a touché ma vie entière. Après des années de honte, de malédictions, de stérilité et de fausses couches… une clé a été donnée. Aujourd'hui, j'ai vu le miracle de Dieu : mon mariage restauré, et la joie d'un enfant dans mes bras. <span class="highlight-quote">Ce n'était pas un rendez-vous… c'était une visitation.</span>"
+                </p>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card fade-in">
+                <h3 class="testimonial-title">
+                    <i class="fas fa-star"></i>
+                    Témoignage d'une aide-soignante
+                </h3>
+                <p class="testimonial-content">
+                    "Je ne désirais plus mon mari. Mon couple semblait éteint. Lors d'un rendez-vous, le Saint-Esprit a révélé qu'il s'agissait en réalité d'une postérité bloquée. À travers une écoute, un soin et une parole prophétique, la libération est venue. Deux mois seulement plus tard, le miracle s'est manifesté : la naissance de jumeaux. <span class="highlight-quote">Ce n'était pas une simple séance… c'était une délivrance générationnelle.</span>"
+                </p>
+            </div>
+
+            <!-- Coming Soon -->
+            <div class="coming-soon fade-in">
+                <h3><i class="fas fa-hourglass-half"></i> Autres témoignages à venir…</h3>
+                <p>Cette page est vivante : d'autres récits de percées et de transformations s'ajouteront au fil du temps.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Prêt(e) pour votre propre visitation ?</h2>
+            <p>Chaque transformation commence par une décision.</p>
+            <a href="rendez-vous.html" class="cta-button">
+                <i class="fas fa-calendar-check" style="margin-right: 0.5rem;"></i>
+                Prendre Rendez-vous Maintenant
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-signature">
+                DanyGrace — Mentore d'identité / High Mindset Coach
+            </div>
+            <div class="footer-tagline">
+                La vision de l'aigle, la frappe du faucon pélerin.
+            </div>
+            <p style="margin-top: 1rem; color: #FFFFF0; font-size: 0.9rem;">
+                Made in Golgotha
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
