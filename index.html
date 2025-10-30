@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Témoignages - DanyGrace</title>
+    <title>DanyGrace - Mentore d'Identité</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -17,6 +17,7 @@
             line-height: 1.6;
             color: #000000;
             background-color: #FFFFFF;
+            overflow-x: hidden;
         }
 
         .container {
@@ -30,23 +31,49 @@
             background: linear-gradient(135deg, #000000 0%, #333333 100%);
             color: #FFFFFF;
             padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23FFFFFF" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
             text-align: center;
         }
 
         .logo {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
             background: linear-gradient(45deg, #FFD700, #F4C2C2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .tagline {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #FFFFF0;
             font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .signature-quote {
+            font-size: 0.9rem;
+            color: #F4C2C2;
+            margin-top: 1rem;
         }
 
         /* Navigation */
@@ -73,47 +100,332 @@
             padding: 0.5rem 1rem;
             border-radius: 25px;
             transition: all 0.3s ease;
+            position: relative;
         }
 
-        .nav-links a:hover, .nav-links a.active {
+        .nav-links a:hover {
             background-color: #F4C2C2;
             color: #FFFFFF;
+            transform: translateY(-2px);
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #FFFFF0, #F4C2C2);
+        /* Sections */
+        .section {
             padding: 4rem 0;
-            text-align: center;
+            position: relative;
         }
 
-        .hero h1 {
+        .section:nth-child(even) {
+            background-color: #FFFFF0;
+        }
+
+        .section-title {
             font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
             color: #000000;
-            margin-bottom: 1rem;
+            position: relative;
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            color: #333333;
-            font-style: italic;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #FFD700, #F4C2C2);
+        }
+
+        /* Home Section */
+        .hero-content {
             max-width: 800px;
             margin: 0 auto;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            padding: 4rem 0;
-            background-color: #FFFFFF;
-        }
-
-        .section-intro {
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            font-size: 1.2rem;
+        }
+
+        .hero-quote {
+            font-size: 1.3rem;
+            font-style: italic;
             color: #333333;
+            margin-bottom: 2rem;
             line-height: 1.8;
+            padding: 2rem;
+            background-color: #FFFFFF;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .hero-quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: #F4C2C2;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+        }
+
+        .hero-quote::after {
+            content: '"';
+            font-size: 4rem;
+            color: #F4C2C2;
+            position: absolute;
+            bottom: -30px;
+            right: 20px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #F4C2C2 0%, #FFFFF0 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #000000;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            filter: grayscale(20%) sepia(10%);
+            transition: all 0.3s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0%) sepia(0%);
+        }
+
+        .photo-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        .photo-placeholder i {
+            margin-bottom: 1rem;
+            color: #F4C2C2;
+        }
+
+        .photo-placeholder p {
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .highlight-text {
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        /* Vision Section */
+        .vision-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .vision-card, .mandate-card {
+            background-color: #FFFFFF;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .vision-card:hover, .mandate-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .vision-card h3, .mandate-card h3 {
+            color: #000000;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .bible-verse {
+            background: linear-gradient(135deg, #FFFFF0, #FFFFFF);
+            color: #000000;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            text-align: center;
+            font-style: italic;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .bible-verse::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #FFD700, #F4C2C2);
+            border-radius: 15px;
+            z-index: -1;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-category {
+            background-color: #FFFFFF;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .service-category h3 {
+            color: #000000;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            padding: 0.5rem 0;
+            color: #333333;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-list li::before {
+            content: '◆';
+            color: #F4C2C2;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #FFFFF0, #F4C2C2);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.1rem;
+            margin: 2rem 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #000000, #333333);
+            color: #FFFFFF;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #FFD700, #F4C2C2);
+            transition: left 0.3s ease;
+            z-index: 0;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .consultation-card {
+            background-color: #FFFFFF;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .price {
+            font-size: 2rem;
+            color: #FFD700;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #000000, #333333);
+            color: #FFFFFF;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-signature {
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 1rem;
         }
 
         .testimonial-card {
@@ -160,8 +472,7 @@
             font-size: 1.15rem;
         }
 
-        /* Coming Soon Section */
-        .coming-soon {
+        .coming-soon-box {
             background: linear-gradient(135deg, #000000, #333333);
             color: #FFFFFF;
             padding: 3rem;
@@ -170,118 +481,78 @@
             margin: 3rem 0;
         }
 
-        .coming-soon h3 {
+        .coming-soon-box h3 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
             color: #FFD700;
         }
 
-        .coming-soon p {
+        .coming-soon-box p {
             font-size: 1.1rem;
             color: #FFFFF0;
             font-style: italic;
         }
 
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #FFD700, #F4C2C2);
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: 2rem;
-            color: #000000;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            color: #333333;
-            margin-bottom: 2rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #000000, #333333);
-            color: #FFFFFF;
-            padding: 1.2rem 3rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #000000, #333333);
-            color: #FFFFFF;
-            padding: 2rem 0;
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        .footer-signature {
-            color: #FFD700;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .footer-tagline {
-            color: #F4C2C2;
-            font-style: italic;
-        }
-
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .testimonial-card {
-                padding: 2rem;
-            }
-
             .nav-links {
                 flex-direction: column;
                 gap: 1rem;
+            }
+
+            .about-content, .vision-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-quote {
+                font-size: 1.1rem;
+                padding: 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
             }
         }
 
         /* Animations */
         .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
             animation: fadeInUp 0.8s ease forwards;
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
+        .section:nth-child(1) .fade-in { animation-delay: 0.1s; }
+        .section:nth-child(2) .fade-in { animation-delay: 0.2s; }
+        .section:nth-child(3) .fade-in { animation-delay: 0.3s; }
+        .section:nth-child(4) .fade-in { animation-delay: 0.4s; }
+        .section:nth-child(5) .fade-in { animation-delay: 0.5s; }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="container">
-            <h1 class="logo">DanyGrace</h1>
-            <p class="tagline">Mentore d'Identité</p>
+            <div class="header-content fade-in">
+                <h1 class="logo">DanyGrace</h1>
+                <p class="tagline">Mentore d'Identité</p>
+                <p class="signature-quote">La vision de l'aigle, la frappe du faucon pélerin.</p>
+            </div>
         </div>
     </header>
 
@@ -289,28 +560,133 @@
     <nav>
         <div class="container">
             <div class="nav-links">
-                <a href="index.html">Accueil</a>
-                <a href="index.html#qui-je-suis">Qui je suis</a>
-                <a href="index.html#services">Services</a>
-                <a href="temoignages.html" class="active">Témoignages</a>
-                <a href="https://forms.gle/JVxSxoXje4hNWNwW6" target="_blank">Rendez-vous</a>
+                <a href="#accueil">Accueil</a>
+                <a href="#qui-je-suis">Qui je suis</a>
+                <a href="#vision">Vision & Mandat</a>
+                <a href="#services">Services</a>
+                <a href="temoignages.html">Témoignages</a>
+                <a href="#contact">Rendez-vous</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Page 1 - Accueil -->
+    <section id="accueil" class="section">
         <div class="container">
-            <h1>✨ Témoignages</h1>
-            <p>Chaque rendez-vous est plus qu'une rencontre : c'est une visitation.</p>
+            <div class="hero-content fade-in">
+                <div class="hero-quote">
+                    Je viens du rejet, de l'abandon, de la brutalité de l'existence, de l'âpreté de l'amour et de la torture spirituelle. Depuis mes 4 ans, je savais que je n'étais pas "à ma place". J'avais des parents, des frères et sœurs, mais je vivais comme une étrangère dans ma propre maison. Mise à la rue à 8 ans, j'ai appris très tôt à conceptualiser la vie et à survivre sans l'amour de mes parents.
+                </div>
+                <p style="font-size: 1.2rem; color: #333333; margin-bottom: 2rem;">
+                    Mon premier "je ne t'aime pas" je l'ai entendu chez moi. Et mon premier "tu ne seras rien" également. Mais je savais que ce n'était pas toute la vérité sur moi.
+                </p>
+                <p style="font-size: 1.1rem; color: #666666; font-style: italic;">
+                    À l'âge où certains vont chercher refuge dans les bras de leurs parents quand ça ne va pas, moi j'ai appris à être mon père, ma mère, et à parler à l'Invisible.
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
+    <!-- Page 2 - Qui je suis -->
+    <section id="qui-je-suis" class="section">
         <div class="container">
-            <div class="section-intro fade-in">
-                Voici quelques témoignages de ceux qui ont vécu l'impact d'un temps d'écoute et de vérité.
+            <h2 class="section-title fade-in">Qui je suis</h2>
+            <div class="about-content fade-in">
+                <div class="about-image">
+                    <!-- Remplacez le src ci-dessous par l'URL de votre photo -->
+                    <img src="https://raw.githubusercontent.com/Maguy78/DanyGrace-officiel-/main/danygrace-photo.jpg" alt="DanyGrace - Mentore d'Identité" 
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><i class=\'fas fa-camera\'></i><p>Photo GitHub introuvable</p></div>'">
+                </div>
+                <div class="about-text">
+                    <p style="font-size: 1.3rem; font-weight: bold; margin-bottom: 1.5rem; color: #000000;">
+                        Je suis DanyGrace — Mentore d'identité. <span class="highlight-text">Chaque cicatrice de mon histoire est devenue une clé, chaque désert une formation.</span> Je transmets aujourd'hui non pas des concepts, mais une vie arrachée à la mort.
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                        Je fais partie de ceux dont on dit qu'ils ont lutté avec la vie. J'avais toutes les raisons d'arrêter, mais je me suis donnée plusieurs autres d'y arriver.
+                    </p>
+                    <p>
+                        Anciennement chef d'entreprise en sécurité et en sûreté aéroportuaire, j'ai dirigé pendant 15 ans des entreprises de plus de 300 employés avant de répondre définitivement à mon appel. Je suis <span class="highlight-text">Mère des nations</span>, envoyée pour réveiller, restaurer, propulser et équiper. Fondatrice et visionnaire de la First Class Académie depuis 5 ans.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 3 - Vision & Mandat -->
+    <section id="vision" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Vision & Mandat</h2>
+            <div class="vision-content fade-in">
+                <div class="vision-card">
+                    <h3><i class="fas fa-eye" style="color: #F4C2C2; margin-right: 0.5rem;"></i>Ma Vision</h3>
+                    <p>Équiper toute personne selon son mandat divin. Dans l'esprit se trouve l'essentiel. Dans l'âme se cache la fantaisie, et parfois on s'y perd. Ma vision est de ramener chacun à sa vérité intérieure, afin qu'il marche dans son mandat avec puissance et clarté.</p>
+                </div>
+                <div class="mandate-card">
+                    <h3><i class="fas fa-bolt" style="color: #FFD700; margin-right: 0.5rem;"></i>Mon Mandat</h3>
+                    <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem;">
+                        Réveiller • Restaurer • Propulser
+                    </p>
+                    <p>Équiper pour plus de puissance.</p>
+                </div>
+            </div>
+            <div class="bible-verse fade-in">
+                <p><strong>Luc 4:18</strong></p>
+                <p style="margin-top: 1rem;">
+                    "L'Esprit du Seigneur est sur moi, Parce qu'il m'a oint pour annoncer une bonne nouvelle aux pauvres; Il m'a envoyé pour guérir ceux qui ont le cœur brisé, Pour proclamer aux captifs la délivrance, Et aux aveugles le recouvrement de la vue, Pour renvoyer libres les opprimés."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 4 - Services -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Ce que je propose</h2>
+            <div class="services-grid fade-in">
+                <div class="service-category">
+                    <h3><i class="fas fa-graduation-cap" style="color: #F4C2C2; margin-right: 0.5rem;"></i>Mes Formations</h3>
+                    <ul class="service-list">
+                        <li>Build Yourself</li>
+                        <li>Build Your Empire</li>
+                        <li>Manifest</li>
+                        <li>Harmonie de vie</li>
+                        <li>Abondance</li>
+                        <li>Boost (pour les entrepreneurs en difficulté)</li>
+                        <li>Deviens une Icône (programme pour les 45/50 ans)</li>
+                        <li>École des Femmes</li>
+                        <li>Femmes de Distinction</li>
+                        <li>Mentorat d'identité</li>
+                    </ul>
+                </div>
+                <div class="service-category">
+                    <h3><i class="fas fa-users" style="color: #FFD700; margin-right: 0.5rem;"></i>Mes Groupes LIVE</h3>
+                    <ul class="service-list">
+                        <li>Groupe de partage</li>
+                        <li>Groupe LIVE privé</li>
+                        <li>Salon privé</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="quote-box fade-in">
+                <p><strong>"Mes formations ne sont pas des cours, ce sont des lieux de résurrection. Chaque espace que j'ouvre est une clé d'élévation et de transformation. J'élève des icônes, pas des copies."</strong></p>
+            </div>
+            <div style="text-align: center;" class="fade-in">
+                <p style="font-size: 1.2rem; margin-bottom: 1.5rem; font-weight: bold; color: #000000; background: linear-gradient(135deg, #FFD700, #FFF8DC); padding: 2rem; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                    Rejoins le programme qui correspond à ton mandat. Mon rôle n'est pas de te motiver, mais de réveiller des trônes. Qui que tu sois, si tu sais qu'il est temps de ressusciter de l'intérieur, alors tu es au bon endroit.
+                </p>
+                <div class="quote-box" style="background: linear-gradient(135deg, #000000, #333333); color: #FFFFFF;">
+                    <p><strong>Mantra :</strong> "Non, personne ne naît pour rien. Il existe seulement des destinées désactivées par le poids de la vie, les blessures, les fêlures ou l'ignorance. Mon but, c'est de vous redonner la puissance."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Témoignages -->
+    <section id="temoignages" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">✨ Témoignages</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.2rem; color: #333333; line-height: 1.8;" class="fade-in">
+                Chaque rendez-vous est plus qu'une rencontre : c'est une visitation. Voici quelques témoignages de ceux qui ont vécu l'impact d'un temps d'écoute et de vérité.
             </div>
 
             <!-- Testimonial 1 -->
@@ -336,22 +712,50 @@
             </div>
 
             <!-- Coming Soon -->
-            <div class="coming-soon fade-in">
+            <div class="coming-soon-box fade-in">
                 <h3><i class="fas fa-hourglass-half"></i> Autres témoignages à venir…</h3>
                 <p>Cette page est vivante : d'autres récits de percées et de transformations s'ajouteront au fil du temps.</p>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- Page 5 - Contact -->
+    <section id="contact" class="section">
         <div class="container">
-            <h2>Prêt(e) pour votre propre visitation ?</h2>
-            <p>Chaque transformation commence par une décision.</p>
-            <a href="https://forms.gle/JVxSxoXje4hNWNwW6" class="cta-button" target="_blank" rel="noopener noreferrer">
-                <i class="fas fa-calendar-check" style="margin-right: 0.5rem;"></i>
-                Prendre Rendez-vous Maintenant
-            </a>
+            <h2 class="section-title fade-in">Prise de rendez-vous</h2>
+            <div class="contact-content fade-in">
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; font-style: italic;">
+                    "Mon temps est précieux, le vôtre aussi. Chaque rendez-vous est un espace de clarté, de direction et d'activation. Si vous souhaitez bénéficier de mon accompagnement personnel, vous pouvez réserver un créneau ci-dessous."
+                </p>
+                <div class="consultation-card">
+                    <h3><i class="fas fa-video" style="color: #F4C2C2; margin-right: 0.5rem;"></i>Consultation Privée d'Identité</h3>
+                    <p style="margin: 1.5rem 0; font-size: 1rem; color: #333333;">
+                        <strong>Durée :</strong> 45 minutes — En ligne (Zoom/Google Meet)
+                    </p>
+                    
+                    <div style="text-align: left; margin: 2rem auto; max-width: 500px; background-color: #FFFFF0; padding: 1.5rem; border-radius: 10px;">
+                        <h4 style="color: #000000; margin-bottom: 1rem; text-align: center; font-size: 1.1rem;">
+                            <i class="fas fa-star" style="color: #FFD700; margin-right: 0.5rem;"></i>Cette consultation comprend :
+                        </h4>
+                        <ul style="list-style: none; padding: 0; color: #333333; line-height: 2;">
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: #FFD700; margin-right: 0.5rem;"></i> Analyse de votre situation actuelle</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: #FFD700; margin-right: 0.5rem;"></i> Identification des blocages et freins</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: #FFD700; margin-right: 0.5rem;"></i> Clarification de votre mandat d'identité</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: #FFD700; margin-right: 0.5rem;"></i> Plan d'action personnalisé</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: #FFD700; margin-right: 0.5rem;"></i> Recommandations de programmes adaptés</li>
+                        </ul>
+                    </div>
+
+                    <div class="price">97 €</div>
+                    <p style="margin: 1rem 0 2rem 0; color: #666666; font-size: 0.95rem;">
+                        Paiement sécurisé • Confirmation immédiate<br>
+                        <em style="font-size: 0.85rem;">Après règlement, vous recevrez un lien pour choisir votre créneau dans mon agenda privé.</em>
+                    </p>
+                    <a href="#" class="cta-button" onclick="alert('Redirection vers le système de paiement sécurisé')">
+                        <span><i class="fas fa-calendar-check" style="margin-right: 0.5rem;"></i>Réserver Ma Consultation</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -369,5 +773,62 @@
             </p>
         </div>
     </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements that should animate
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section[id]');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
