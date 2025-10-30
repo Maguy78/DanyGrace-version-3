@@ -723,38 +723,429 @@
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title fade-in">Prise de rendez-vous</h2>
-            <div class="contact-content fade-in">
-                <p style="font-size: 1.2rem; margin-bottom: 2rem; font-style: italic;">
-                    "Mon temps est précieux, le vôtre aussi. Chaque rendez-vous est un espace de clarté, de direction et d'activation. Si vous souhaitez bénéficier de mon accompagnement personnel, vous pouvez réserver un créneau ci-dessous."
-                </p>
-                <div class="consultation-card">
-                    <h3><i class="fas fa-video" style="color: #F4C2C2; margin-right: 0.5rem;"></i>Consultation Privée d'Identité</h3>
-                    <p style="margin: 1.5rem 0; font-size: 1rem; color: #333333;">
-                        <strong>Durée :</strong> 45 minutes — En ligne (Zoom/Google Meet)
-                    </p>
-                    
-                    <div style="text-align: left; margin: 2rem auto; max-width: 500px; background-color: #FFFFF0; padding: 1.5rem; border-radius: 10px;">
-                        <h4 style="color: #000000; margin-bottom: 1rem; text-align: center; font-size: 1.1rem;">
-                            <i class="fas fa-star" style="color: #FFD700; margin-right: 0.5rem;"></i>Cette consultation comprend :
-                        </h4>
-                        <ul style="list-style: none; padding: 0; color: #333333; line-height: 2;">
-                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: #FFD700; margin-right: 0.5rem;"></i> Analyse de votre situation actuelle</li>
-                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: #FFD700; margin-right: 0.5rem;"></i> Identification des blocages et freins</li>
-                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: #FFD700; margin-right: 0.5rem;"></i> Clarification de votre mandat d'identité</li>
-                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: #FFD700; margin-right: 0.5rem;"></i> Plan d'action personnalisé</li>
-                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: #FFD700; margin-right: 0.5rem;"></i> Recommandations de programmes adaptés</li>
-                        </ul>
-                    </div>
+           <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prendre Rendez-vous - DanyGrace</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-                    <div class="price">97 €</div>
-                    <p style="margin: 1rem 0 2rem 0; color: #666666; font-size: 0.95rem;">
-                        Paiement sécurisé • Confirmation immédiate<br>
-                        <em style="font-size: 0.85rem;">Après règlement, vous recevrez un lien pour choisir votre créneau dans mon agenda privé.</em>
-                    </p>
-                    <a href="#" class="cta-button" onclick="alert('Redirection vers le système de paiement sécurisé')">
-                        <span><i class="fas fa-calendar-check" style="margin-right: 0.5rem;"></i>Réserver Ma Consultation</span>
-                    </a>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #000000;
+            background-color: #FFFFFF;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            color: #FFFFFF;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #FFD700, #F4C2C2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: #FFFFF0;
+            font-style: italic;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #FFFFF0;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: #F4C2C2;
+            color: #FFFFFF;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #FFD700, #F4C2C2);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            color: #000000;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #333333;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
+        }
+
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+        }
+
+        .intro-text {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            color: #333333;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #FFFFF0, #FFFFFF);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            border-left: 5px solid #FFD700;
+        }
+
+        .definition-box h2 {
+            color: #000000;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .definition-box h2 i {
+            color: #FFD700;
+        }
+
+        .definition-box p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #333333;
+        }
+
+        /* Expectations Section */
+        .expectations {
+            background: linear-gradient(135deg, #000000, #333333);
+            color: #FFFFFF;
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+        }
+
+        .expectations h2 {
+            color: #FFD700;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .expectation-item {
+            margin-bottom: 2rem;
+        }
+
+        .expectation-item h3 {
+            color: #F4C2C2;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .expectation-item p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #FFFFF0;
+            margin-left: 2rem;
+        }
+
+        /* Practical Info */
+        .practical-info {
+            background-color: #FFFFF0;
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+        }
+
+        .practical-info h2 {
+            color: #000000;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-item i {
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .info-item h3 {
+            color: #000000;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-item p {
+            color: #333333;
+            font-size: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-final {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #F4C2C2, #FFD700);
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .cta-final h2 {
+            font-size: 2.2rem;
+            color: #000000;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #000000, #333333);
+            color: #FFFFFF;
+            padding: 1.5rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #000000, #333333);
+            color: #FFFFFF;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-signature {
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            color: #F4C2C2;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .definition-box,
+            .expectations,
+            .practical-info {
+                padding: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1 class="logo">DanyGrace</h1>
+            <p class="tagline">Mentore d'Identité</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="index.html#qui-je-suis">Qui je suis</a>
+                <a href="index.html#services">Services</a>
+                <a href="temoignages.html">Témoignages</a>
+                <a href="rendez-vous.html" class="active">Prendre Rendez-vous</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>✨ Un rendez-vous n'est pas une conversation.</h1>
+            <p class="hero-subtitle">C'est une convocation.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="container">
+            <div class="content-section fade-in">
+                <p class="intro-text">
+                    Un rendez-vous avec moi n'est pas un simple échange. Ce n'est pas une consultation, ni une séance de coaching ordinaire. C'est un espace sacré, un autel de vérité où tu viens non pas chercher des réponses humaines… mais recevoir une clé céleste pour ta vie.
+                </p>
+            </div>
+
+            <!-- What is an appointment -->
+            <div class="definition-box fade-in">
+                <h2>
+                    <i class="fas fa-seedling"></i>
+                    Ce qu'est un rendez-vous avec moi
+                </h2>
+                <p>
+                    Tu viens déposer. Je reçois. Et ensemble, nous discernons ce que le Ciel dit de toi. Dans cet espace, il ne s'agit pas de me convaincre, ni de t'expliquer. Il s'agit de laisser tomber les illusions et de retrouver ton axe.
+                </p>
+            </div>
+
+            <!-- What to expect -->
+            <div class="expectations fade-in">
+                <h2>
+                    <i class="fas fa-key"></i>
+                    Ce que tu peux attendre d'un rendez-vous
+                </h2>
+                <div class="expectation-item">
+                    <h3><i class="fas fa-eye"></i> Clarté</h3>
+                    <p>Voir ce qui était confus dans ta vie ou tes décisions.</p>
                 </div>
+                <div class="expectation-item">
+                    <h3><i class="fas fa-compass"></i> Alignement</h3>
+                    <p>Sortir du mensonge subtil et retrouver ton axe intérieur.</p>
+                </div>
+                <div class="expectation-item">
+                    <h3><i class="fas fa-bolt"></i> Activation</h3>
+                    <p>Repartir avec une parole, une clé, ou une direction qui libère ta trajectoire.</p>
+                </div>
+            </div>
+
+            <!-- Practical Information -->
+            <div class="practical-info fade-in">
+                <h2>
+                    <i class="fas fa-info-circle"></i>
+                    Modalités pratiques
+                </h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <h3>Durée</h3>
+                        <p>Environ 45 minutes à 1h</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-video"></i>
+                        <h3>Format</h3>
+                        <p>Visioconférence (Zoom/Meet) ou présentiel selon disponibilité</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-euro-sign"></i>
+                        <h3>Contribution</h3>
+                        <p>97€ (selon l'espace que tu souhaites ouvrir)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final CTA -->
+            <div class="cta-final fade-in">
+                <h2>Prêt(e) à franchir cette porte ?</h2>
+                <a href="https://forms.gle/JVxSxoXje4hNWNwW6" class="cta-button" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-calendar-check" style="margin-right: 0.5rem;"></i>
+                    Prendre Rendez-vous Maintenant
+                </a>
+                <p style="margin-top: 2rem; color: #333333; font-size: 1rem;">
+                    Paiement sécurisé • Confirmation immédiate
+                </p>
             </div>
         </div>
     </section>
@@ -773,62 +1164,5 @@
             </p>
         </div>
     </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationDelay = '0s';
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all elements that should animate
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Active navigation highlighting
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section[id]');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
